@@ -414,7 +414,7 @@
         const observer=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.style.opacity='1';entry.target.style.transform='translateY(0)'}})},{threshold:0.1,rootMargin:'0px 0px -80px 0px'});
         document.querySelectorAll('.manifesto-card,.topic-cell,.timeline-item,.track,.speaker-card,.organizer-card,.program-tba').forEach(el=>{el.style.opacity='0';el.style.transform='translateY(30px)';el.style.transition='opacity 0.8s ease, transform 0.8s ease';observer.observe(el)});
         // Countdown to the paper submission deadline (Jul 27, 2026, 11:59 PM AoE = Jul 28 11:59 UTC)
-        const eccvStart=new Date('2026-07-25T11:59:00+00:00');
+        const eccvStart=new Date('2026-07-28T11:59:00+00:00');
         const pad=n=>String(n).padStart(2,'0');
         function tick(){
             const diff=eccvStart-new Date();
