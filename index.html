@@ -209,6 +209,16 @@
         .speaker-bio { font-size: 1.05rem; color: var(--text); line-height: 1.65; }
         .speaker-status { position: absolute; top: 0.85rem; right: 0.85rem; padding: 0.25rem 0.5rem; color: var(--white); font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; z-index: 3; }
         .speaker-status.pending { background: rgba(255,255,255,0.15); }
+        .speaker-status.confirmed { background: var(--vermillion); }
+        .status-chip { display: inline-block; margin-left: 0.75rem; padding: 0.15rem 0.5rem; font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; vertical-align: middle; }
+        .status-chip.open { background: rgba(201,162,39,0.15); color: var(--ochre); border: 1px solid rgba(201,162,39,0.45); }
+        .status-chip.closed { background: rgba(255,255,255,0.06); color: var(--text-muted); border: 1px solid var(--border-strong); }
+        .timeline-item.is-closed { opacity: 0.5; }
+        .timeline-item.is-closed .timeline-date { text-decoration: line-through; }
+        .speaker-name a { color: inherit; text-decoration: none; font-size: 1em; transition: color 0.3s ease; }
+        .speaker-name a:hover { color: var(--vermillion); }
+        .speaker-avatar { text-transform: uppercase; letter-spacing: 0.05em; }
+        .speaker-avatar img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; z-index: 1; }
 
         /* ── COMMITTEE ── */
         #committee { background: var(--bg-alt); }
@@ -284,9 +294,9 @@
     </nav>
 
     <section class="hero">
-        <div class="hero-canvas"><img class="hero-photo" src="assets/images/malmo-hero.jpg" alt="Malmö harbour at dusk — home of ECCV 2026" /></div>
+        <div class="hero-canvas"><img class="hero-photo" src="assets/images/malmo-hero.jpg" alt="Malmö harbour at dusk, home of ECCV 2026" /></div>
         <div class="hero-content">
-            <p class="hero-eyebrow">ECCV 2026 Workshop — Malmö, Sweden</p>
+            <p class="hero-eyebrow">ECCV 2026 Workshop · Malmö, Sweden</p>
             <h1 class="hero-title">AI for Visual Arts<em>The 4th Edition</em></h1>
             <div class="hero-meta"><span><span class="dot"></span>September 9, 2026 · Afternoon (PM) Session</span><span><span class="dot"></span>Malmö, Sweden</span><span><span class="dot"></span>Half-Day Workshop</span></div>
             <div class="countdown" id="countdown">
@@ -295,7 +305,7 @@
                 <div class="countdown-unit"><span class="countdown-value" id="cd-mins">--</span><span class="countdown-label">Minutes</span></div>
                 <div class="countdown-unit"><span class="countdown-value" id="cd-secs">--</span><span class="countdown-label">Seconds</span></div>
             </div>
-            <p class="countdown-caption">Until the paper submission deadline</p>
+            <p class="countdown-caption" id="countdown-caption">Until the extended abstract deadline · full paper track closed</p>
         </div>
         <div class="scroll-indicator">SCROLL</div>
     </section>
@@ -310,8 +320,8 @@
         <div class="about-content">
             <span class="section-label">About</span>
             <h2 class="section-title">Where machines learn to perceive, imagine, and create</h2>
-            <p>The 4th AI for Visual Arts workshop at ECCV 2026 explores how computer vision perceives, interprets, models, and generates abstraction across artistic and cultural imagery — paintings, comics, films, typography, sculpture, and heritage artefacts that challenge the assumptions of conventional models.</p>
-            <p>Building on three successful editions, AI4VA now expands toward the frontier of generative and agentic creativity: world models for cinematic simulation, long-form video generation for storyboarding, neural 3D representations for creative domains, and agentic workflows for art, film, and storytelling — alongside our enduring focus on perception under abstraction, provenance, and the digitisation and restoration of cultural heritage.</p>
+            <p>The 4th AI for Visual Arts workshop at ECCV 2026 explores how computer vision perceives, interprets, models, and generates abstraction across artistic and cultural imagery: paintings, comics, films, typography, sculpture, and heritage artefacts that challenge the assumptions of conventional models.</p>
+            <p>Building on three successful editions, AI4VA now expands toward the frontier of generative and agentic creativity: world models for cinematic simulation, long-form video generation for storyboarding, neural 3D representations for creative domains, and agentic workflows for art, film, and storytelling, alongside our enduring focus on perception under abstraction, provenance, and the digitisation and restoration of cultural heritage.</p>
         </div>
     </section>
 
@@ -347,7 +357,7 @@
             <div class="topic-cell"><span class="topic-index">011</span><span class="topic-name">Digitising historic archives</span></div>
             <div class="topic-cell"><span class="topic-index">012</span><span class="topic-name">Spatial intelligence for cultural heritage &amp; digital restoration</span></div>
             <div class="topic-cell"><span class="topic-index">013</span><span class="topic-name">Robust segmentation, depth &amp; saliency in stylized imagery</span></div>
-            <div class="topic-cell"><span class="topic-index">014</span><span class="topic-name">Vision–language alignment &amp; multimodal reasoning in art</span></div>
+            <div class="topic-cell"><span class="topic-index">014</span><span class="topic-name">Vision-language alignment &amp; multimodal reasoning in art</span></div>
             <div class="topic-cell"><span class="topic-index">015</span><span class="topic-name">Image composition for visual arts</span></div>
             <div class="topic-cell"><span class="topic-index">016</span><span class="topic-name">Any AI × Visual Art intersection</span></div>
         </div>
@@ -357,12 +367,12 @@
         <span class="section-number">03</span><span class="section-label">Timeline</span>
         <h2 class="section-title">Important Dates</h2>
         <div class="dates-layout">
-            <div class="date-highlight"><div class="date-highlight-box"><span class="date-month">September</span><span class="date-day">09</span><span class="date-year">2026 · PM Session</span><div class="date-location">Malmö, Sweden<br>ECCV 2026 · Sep 8–13<br>Workshop: Sep 9 (afternoon)</div></div></div>
+            <div class="date-highlight"><div class="date-highlight-box"><span class="date-month">September</span><span class="date-day">09</span><span class="date-year">2026 · PM Session</span><div class="date-location">Malmö, Sweden<br>ECCV 2026 · Sep 8 to 13<br>Workshop: Sep 9 (afternoon)</div></div></div>
             <div class="timeline">
-                <div class="timeline-section"><h3 class="timeline-section-title">Full Papers (Archival)</h3><div class="timeline-item"><span class="timeline-date">Jul 27, 2026</span><div class="timeline-content"><h4>Full Paper Submission Deadline</h4><p>11:59 PM AoE — via OpenReview</p></div></div><div class="timeline-item"><span class="timeline-date">Aug 8, 2026</span><div class="timeline-content"><h4>Acceptance Notification</h4><p>Authors notified by email</p></div></div><div class="timeline-item"><span class="timeline-date">Aug 14, 2026</span><div class="timeline-content"><h4>Camera-Ready &amp; Copyright Due</h4><p>ECCV 2026 Workshop Proceedings (Springer)</p></div></div></div>
-                <div class="timeline-section"><h3 class="timeline-section-title">Extended Abstracts (Non-Archival)</h3><div class="timeline-item"><span class="timeline-date">Jul 27, 2026</span><div class="timeline-content"><h4>Extended Abstract Submission</h4><p>11:59 PM AoE — via OpenReview</p></div></div><div class="timeline-item"><span class="timeline-date">Aug 8, 2026</span><div class="timeline-content"><h4>Acceptance Notification</h4><p>No camera-ready required</p></div></div></div>
+                <div class="timeline-section"><h3 class="timeline-section-title">Full Papers (Archival) <span class="status-chip closed">Closed</span></h3><div class="timeline-item is-closed"><span class="timeline-date">Jul 27, 2026</span><div class="timeline-content"><h4>Full Paper Submission Deadline</h4><p>Closed. This track is no longer accepting submissions</p></div></div><div class="timeline-item"><span class="timeline-date">Aug 8, 2026</span><div class="timeline-content"><h4>Acceptance Notification</h4><p>Authors notified by email</p></div></div><div class="timeline-item"><span class="timeline-date">Aug 14, 2026</span><div class="timeline-content"><h4>Camera-Ready &amp; Copyright Due</h4><p>ECCV 2026 Workshop Proceedings (Springer)</p></div></div></div>
+                <div class="timeline-section"><h3 class="timeline-section-title">Extended Abstracts (Non-Archival) <span class="status-chip open">Open</span></h3><div class="timeline-item"><span class="timeline-date">Aug 6, 2026</span><div class="timeline-content"><h4>Extended Abstract Submission Deadline</h4><p>11:59 PM AoE · via OpenReview · still open</p></div></div><div class="timeline-item"><span class="timeline-date">Aug 13, 2026</span><div class="timeline-content"><h4>Acceptance Notification</h4><p>11:59 PM AoE · authors notified by email · no camera-ready required</p></div></div></div>
                 <div class="timeline-item" style="border-bottom: none; background: rgba(255,255,255,0.02); padding: 1.25rem;"><span class="timeline-date">Sep 9, 2026</span><div class="timeline-content"><h4>Workshop Day</h4><p>Afternoon (PM) session · Malmö, Sweden</p></div></div>
-                <div class="timeline-notice">All deadlines are 11:59 PM AoE (Anywhere on Earth). Full papers appear in the ECCV 2026 Workshop Proceedings (Springer); extended abstracts are non-archival. All submissions are handled via OpenReview.</div>
+                <div class="timeline-notice">The full paper (archival) track has closed. Extended abstract submissions remain open until 11:59 PM AoE (Anywhere on Earth) on August 6, 2026. Full papers appear in the ECCV 2026 Workshop Proceedings (Springer); extended abstracts are non-archival. All submissions are handled via OpenReview.</div>
             </div>
         </div>
     </section>
@@ -371,15 +381,15 @@
         <span class="section-number">04</span><span class="section-label">Call for Papers</span>
         <h2 class="section-title">Submissions Open</h2>
         <div class="tracks-container">
-            <div class="track"><span class="track-number">Track I — Archival</span><h3>Full Papers</h3><p>Novel, previously unpublished research. Accepted papers appear in the official ECCV 2026 Workshop Proceedings.</p><div class="track-specs"><dl><dt>Length</dt><dd>Up to 14 pages</dd><dt>Format</dt><dd>ECCV 2026 Style</dd><dt>Review</dt><dd>Double-blind</dd><dt>Supplementary</dt><dd>Optional</dd></dl></div></div>
-            <div class="track"><span class="track-number">Track II — Non-Archival</span><h3>Extended Abstracts</h3><p>New, previously, or concurrently published research or work-in-progress. Will not appear in proceedings.</p><div class="track-specs"><dl><dt>Length</dt><dd>Up to 4 pages</dd><dt>Format</dt><dd>ECCV 2026 Style</dd><dt>Review</dt><dd>Double-blind</dd><dt>Camera-Ready</dt><dd>Not required</dd></dl></div></div>
+            <div class="track"><span class="track-number">Track I · Archival <span class="status-chip closed">Closed</span></span><h3>Full Papers</h3><p>Novel, previously unpublished research. Accepted papers appear in the official ECCV 2026 Workshop Proceedings. This track closed on July 27, 2026 and is no longer accepting submissions.</p><div class="track-specs"><dl><dt>Length</dt><dd>Up to 14 pages</dd><dt>Format</dt><dd>ECCV 2026 Style</dd><dt>Review</dt><dd>Double-blind</dd><dt>Supplementary</dt><dd>Optional</dd><dt>Deadline</dt><dd>Closed</dd></dl></div></div>
+            <div class="track"><span class="track-number">Track II · Non-Archival <span class="status-chip open">Open</span></span><h3>Extended Abstracts</h3><p>New, previously, or concurrently published research or work-in-progress. Will not appear in proceedings. Submissions are open until August 6, 2026 (11:59 PM AoE).</p><div class="track-specs"><dl><dt>Length</dt><dd>Up to 4 pages</dd><dt>Format</dt><dd>ECCV 2026 Style</dd><dt>Review</dt><dd>Double-blind</dd><dt>Camera-Ready</dt><dd>Not required</dd><dt>Deadline</dt><dd>Aug 6, 2026</dd></dl></div></div>
         </div>
         <div class="submission-banner">
             <p class="submission-banner-label">Submission Portal</p>
-            <h4>Submit via OpenReview</h4>
-            <p>All submissions to the 4th AI for Visual Arts workshop are handled through OpenReview and reviewed double-blind. Please anonymize your submission and, on the OpenReview form, select the correct track — <strong>Full Paper</strong> (archival, up to 14 pages) or <strong>Extended Abstract</strong> (non-archival, up to 4 pages). Choosing the right track ensures your paper is reviewed against the correct length and archival criteria.</p>
-            <p class="track-note">OpenReview submission site now open · Both tracks due Jul 27, 2026 (AoE)</p><br>
-            <a href="https://openreview.net/group?id=thecvf.com/ECCV/2026/Workshop/AI4VA" class="btn-submit" target="_blank" rel="noopener">Submit on OpenReview</a>
+            <h4>Extended Abstracts Still Open</h4>
+            <p>The <strong>Full Paper</strong> (archival) track closed on July 27, 2026. The <strong>Extended Abstract</strong> track (non-archival, up to 4 pages) remains open until <strong>August 6, 2026, 11:59 PM AoE</strong>. Submissions are handled through OpenReview and reviewed double-blind. Please anonymize your submission and select the Extended Abstract track on the OpenReview form.</p>
+            <p class="track-note">Extended abstracts due Aug 6, 2026 (AoE) · Full paper track closed</p><br>
+            <a href="https://openreview.net/group?id=thecvf.com/ECCV/2026/Workshop/AI4VA" class="btn-submit" target="_blank" rel="noopener">Submit an Extended Abstract</a>
         </div>
         <div class="presentation-info"><div class="presentation-icon">◎</div><div><h4>Presentation Guidelines</h4><p>All accepted papers present a poster. Selected oral spotlight presenters will additionally deliver a short talk. Poster dimensions and detailed presentation guidelines will follow the ECCV 2026 workshop logistics and will be announced after acceptance notifications.</p></div></div>
     </section>
@@ -389,15 +399,15 @@
         <h2 class="section-title">Workshop Program</h2>
         <div class="program-tba">
             <h4>Program To Be Announced</h4>
-            <p>The half-day afternoon program — keynotes, archival paper spotlights, poster session, and panel discussion — will be published here once the speaker lineup is confirmed.</p>
+            <p>The half-day afternoon program (keynotes, archival paper spotlights, poster session, and panel discussion) will be published here once the speaker lineup is confirmed.</p>
         </div>
     </section>
 
     <section id="speakers"><span class="section-number">06</span><span class="section-label">Keynotes</span><h2 class="section-title">Invited Speakers</h2><div class="speakers-grid">
-        <div class="speaker-card"><span class="speaker-status pending">TBA</span><div class="speaker-avatar">?</div><h4 class="speaker-name">To Be Announced</h4><p class="speaker-affiliation">Keynote 1</p><p class="speaker-bio">Our keynote lineup for the 4th edition is being finalised and will be announced soon.</p></div>
-        <div class="speaker-card"><span class="speaker-status pending">TBA</span><div class="speaker-avatar">?</div><h4 class="speaker-name">To Be Announced</h4><p class="speaker-affiliation">Keynote 2</p><p class="speaker-bio">Our keynote lineup for the 4th edition is being finalised and will be announced soon.</p></div>
-        <div class="speaker-card"><span class="speaker-status pending">TBA</span><div class="speaker-avatar">?</div><h4 class="speaker-name">To Be Announced</h4><p class="speaker-affiliation">Keynote 3</p><p class="speaker-bio">Our keynote lineup for the 4th edition is being finalised and will be announced soon.</p></div>
-        <div class="speaker-card"><span class="speaker-status pending">TBA</span><div class="speaker-avatar">?</div><h4 class="speaker-name">To Be Announced</h4><p class="speaker-affiliation">Keynote 4</p><p class="speaker-bio">Our keynote lineup for the 4th edition is being finalised and will be announced soon.</p></div>
+        <div class="speaker-card"><span class="speaker-status confirmed">Confirmed</span><div class="speaker-avatar"><img src="assets/images/bjorn_ommer.jpg" alt="Björn Ommer" onerror="this.remove()" />BO</div><h4 class="speaker-name"><a href="https://ommer-lab.com/ommer/" target="_blank" rel="noopener">Björn Ommer</a></h4><p class="speaker-affiliation">LMU Munich</p><p class="speaker-bio">Professor of Computer Vision &amp; Learning at Ludwig Maximilian University of Munich. His group's work on latent diffusion models underpins Stable Diffusion and much of today's generative image research.</p></div>
+        <div class="speaker-card"><span class="speaker-status confirmed">Confirmed</span><div class="speaker-avatar"><img src="assets/images/niloy_mitra.jpg" alt="Niloy J. Mitra" onerror="this.remove()" />NM</div><h4 class="speaker-name"><a href="http://www0.cs.ucl.ac.uk/staff/n.mitra/" target="_blank" rel="noopener">Niloy J. Mitra</a></h4><p class="speaker-affiliation">University College London · Adobe Research</p><p class="speaker-bio">Professor of Computer Graphics at UCL, where he leads the Smart Geometry Processing group, and Senior Research Scientist at Adobe Research. Works on geometry processing, shape analysis, and generative models for 3D content.</p></div>
+        <div class="speaker-card"><span class="speaker-status confirmed">Confirmed</span><div class="speaker-avatar"><img src="assets/images/ranjay_krishna.jpg" alt="Ranjay Krishna" onerror="this.remove()" />RK</div><h4 class="speaker-name"><a href="https://www.ranjaykrishna.com/index.html" target="_blank" rel="noopener">Ranjay Krishna</a></h4><p class="speaker-affiliation">University of Washington · Allen Institute for AI</p><p class="speaker-bio">Assistant Professor at the Paul G. Allen School and research lead at AI2. Creator of Visual Genome; his work spans vision-language models, multimodal reasoning, and human-AI interaction.</p></div>
+        <div class="speaker-card"><span class="speaker-status pending">TBA</span><div class="speaker-avatar">?</div><h4 class="speaker-name">To Be Announced</h4><p class="speaker-affiliation">Keynote 4</p><p class="speaker-bio">Our fourth keynote is awaiting confirmation and will be announced here shortly.</p></div>
     </div></section>
 
     <section id="committee"><span class="section-number">07</span><span class="section-label">Organizers</span><h2 class="section-title">Organizing Committee</h2><div class="organizers-grid"><div class="organizer-card"><img class="organizer-photo" src="assets/images/deblina_bhattacharjee.jpeg" alt="Deblina Bhattacharjee" /><span class="organizer-role">Lead Organizer</span><h4 class="organizer-name">Deblina Bhattacharjee</h4><p class="organizer-affiliation">Assistant Professor, University of Bath, UK</p></div><div class="organizer-card"><img class="organizer-photo" src="assets/images/yin_zhang.jpeg" alt="Yin Zhang" /><span class="organizer-role">Organizer</span><h4 class="organizer-name"><a href="https://www.linkedin.com/in/yinzhang-unige/" target="_blank">Iris (Yin) Zhang</a></h4><p class="organizer-affiliation">PhD in Translation Studies, University of Geneva</p></div><div class="organizer-card"><img class="organizer-photo" src="assets/images/bingchen_zhao.png" alt="Bingchen Zhao" /><span class="organizer-role">Organizer</span><h4 class="organizer-name"><a href="https://bzhao.me/" target="_blank">Bingchen Zhao</a></h4><p class="organizer-affiliation">PhD in Computer Science, University of Edinburgh</p></div></div></section>
@@ -413,19 +423,28 @@
         document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',function(e){e.preventDefault();const t=document.querySelector(this.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth',block:'start'})})});
         const observer=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.style.opacity='1';entry.target.style.transform='translateY(0)'}})},{threshold:0.1,rootMargin:'0px 0px -80px 0px'});
         document.querySelectorAll('.manifesto-card,.topic-cell,.timeline-item,.track,.speaker-card,.organizer-card,.program-tba').forEach(el=>{el.style.opacity='0';el.style.transform='translateY(30px)';el.style.transition='opacity 0.8s ease, transform 0.8s ease';observer.observe(el)});
-        // Countdown to the paper submission deadline (Jul 27, 2026, 11:59 PM AoE = Jul 28 11:59 UTC)
-        const eccvStart=new Date('2026-07-28T11:59:00+00:00');
+        // Countdown to the extended abstract deadline (Aug 6, 2026, 11:59 PM AoE = Aug 7 11:59 UTC)
+        const deadline=new Date('2026-08-07T11:59:00+00:00');
         const pad=n=>String(n).padStart(2,'0');
+        let timer=null;
         function tick(){
-            const diff=eccvStart-new Date();
-            if(diff<=0){document.getElementById('countdown').innerHTML='<div class="countdown-unit" style="min-width:auto;padding:1rem 2rem;"><span class="countdown-value" style="font-size:1.6rem;font-style:italic;">Submissions are now closed</span></div>';clearInterval(timer);return}
+            const diff=deadline-new Date();
+            if(diff<=0){
+                document.getElementById('countdown').innerHTML='<div class="countdown-unit" style="min-width:auto;padding:1rem 2rem;"><span class="countdown-value" style="font-size:1.6rem;font-style:italic;">Extended abstract submissions are now closed</span></div>';
+                const cap=document.getElementById('countdown-caption');
+                if(cap)cap.textContent='The extended abstract deadline has passed';
+                if(timer)clearInterval(timer);
+                timer=null;
+                return false;
+            }
             const d=Math.floor(diff/864e5),h=Math.floor(diff%864e5/36e5),m=Math.floor(diff%36e5/6e4),s=Math.floor(diff%6e4/1e3);
             document.getElementById('cd-days').textContent=d;
             document.getElementById('cd-hours').textContent=pad(h);
             document.getElementById('cd-mins').textContent=pad(m);
             document.getElementById('cd-secs').textContent=pad(s);
+            return true;
         }
-        tick();const timer=setInterval(tick,1000);
+        if(tick())timer=setInterval(tick,1000);
     </script>
 </body>
 </html>
