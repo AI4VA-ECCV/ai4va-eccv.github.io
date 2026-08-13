@@ -193,9 +193,67 @@
         #program { background: var(--bg-alt); position: relative; }
         #program .section-label { color: var(--vermillion); }
         #program .section-label::before { background: var(--vermillion); }
-        .program-tba { margin-top: 2rem; padding: 3rem; background: var(--bg-surface); border: 1px dashed var(--border-strong); text-align: center; }
-        .program-tba h4 { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 300; color: var(--text-bright); margin-bottom: 0.75rem; }
-        .program-tba p { font-size: 1.15rem; color: var(--text-muted); max-width: 640px; margin: 0 auto; }
+
+        .program-grid { margin-top: 2.5rem; border: 1px solid var(--border-strong); border-bottom: none; }
+        .program-row { display: grid; grid-template-columns: 190px 1fr 150px; gap: 2rem; align-items: center; padding: 1.4rem 1.75rem; border-bottom: 1px solid var(--border); background: var(--bg-surface); transition: all 0.3s ease; position: relative; }
+        .program-row::before { content:''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--border-strong); transition: background 0.3s ease; }
+        .program-row:hover { background: var(--bg-elevated); }
+        .program-row.is-keynote::before { background: var(--vermillion); }
+        .program-row.is-poster::before { background: var(--ochre); }
+        .program-row.is-oral::before { background: var(--ultramarine); }
+        .program-row.is-chair::before { background: var(--violet); }
+        .program-row.is-transit { background: rgba(255,255,255,0.015); }
+        .program-time { font-family: 'Space Mono', monospace; font-size: 0.85rem; color: var(--vermillion); letter-spacing: 0.03em; font-variant-numeric: tabular-nums; }
+        .program-row.is-transit .program-time { color: var(--text-muted); }
+        .program-what h4 { font-family: 'Syne', sans-serif; font-size: 1.05rem; font-weight: 600; color: var(--text-bright); margin-bottom: 0.15rem; letter-spacing: 0.01em; }
+        .program-what p { font-size: 1.05rem; color: var(--text-muted); line-height: 1.6; margin: 0; }
+        .program-tag { font-family: 'Space Mono', monospace; font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-muted); text-align: right; }
+        .program-note { margin-top: 1.5rem; padding: 1.25rem 1.5rem; background: rgba(230,59,46,0.06); border-left: 3px solid var(--vermillion); font-size: 1.05rem; color: var(--text-muted); font-style: italic; }
+        .program-logistics { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-top: 1.5rem; }
+        .logistics-card { padding: 2rem; background: var(--bg-surface); border: 1px solid var(--border); transition: all 0.3s ease; }
+        .logistics-card:hover { transform: translateY(-4px); box-shadow: 0 15px 40px rgba(0,0,0,0.35); }
+        .logistics-card h4 { font-family: 'Syne', sans-serif; font-size: 0.95rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-bright); margin-bottom: 0.75rem; }
+        .logistics-card p { font-size: 1.08rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 0.6rem; }
+        .logistics-card p:last-child { margin-bottom: 0; }
+        .logistics-spec { font-family: 'Space Mono', monospace; font-size: 0.85rem; color: var(--ochre); letter-spacing: 0.05em; }
+
+        /* ── ALERT BAR ── */
+        .alert-bar { background: var(--vermillion); color: var(--white); padding: 1.5rem 4rem; display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap; position: relative; overflow: hidden; }
+        .alert-bar::before { content:''; position: absolute; inset: 0; background: repeating-linear-gradient(45deg, rgba(0,0,0,0.05) 0 12px, transparent 12px 24px); pointer-events: none; }
+        .alert-bar-text { position: relative; display: flex; align-items: baseline; gap: 1.25rem; flex-wrap: wrap; }
+        .alert-flag { font-family: 'Space Mono', monospace; font-size: 0.62rem; font-weight: 700; letter-spacing: 0.25em; text-transform: uppercase; background: var(--white); color: var(--vermillion); padding: 0.3rem 0.65rem; white-space: nowrap; }
+        .alert-bar-text strong { font-family: 'Syne', sans-serif; font-size: 1.05rem; font-weight: 700; letter-spacing: 0.02em; }
+        .alert-bar-text span.alert-sub { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-style: italic; color: rgba(255,255,255,0.9); }
+        .alert-bar-cta { position: relative; font-family: 'Space Mono', monospace; font-size: 0.75rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--white); text-decoration: none; border: 1px solid rgba(255,255,255,0.7); padding: 0.85rem 1.75rem; white-space: nowrap; transition: all 0.3s ease; }
+        .alert-bar-cta:hover { background: var(--white); color: var(--vermillion); border-color: var(--white); }
+
+        /* ── CAMERA-READY ── */
+        #camera-ready { background: var(--bg); }
+        #camera-ready .section-label { color: var(--vermillion); }
+        #camera-ready .section-label::before { background: var(--vermillion); }
+        .cr-lede { max-width: 780px; font-size: 1.25rem; line-height: 1.8; color: var(--text); margin-bottom: 0.75rem; }
+        .cr-readcarefully { display: inline-block; margin-bottom: 2rem; font-family: 'Space Mono', monospace; font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--vermillion); border: 1px solid rgba(230,59,46,0.45); background: rgba(230,59,46,0.07); padding: 0.7rem 1.25rem; }
+        .cr-steps { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+        .cr-step { background: var(--bg-surface); border: 1px solid var(--border-strong); padding: 2.25rem; position: relative; }
+        .cr-step::before { content:''; position: absolute; top: 0; left: 0; width: 100%; height: 3px; background: var(--vermillion); }
+        .cr-step:nth-child(2)::before { background: var(--ultramarine); }
+        .cr-step-label { font-family: 'Space Mono', monospace; font-size: 0.65rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--ochre); margin-bottom: 0.75rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+        .cr-due { color: var(--vermillion); border: 1px solid rgba(230,59,46,0.4); padding: 0.2rem 0.55rem; }
+        .cr-step h3 { font-family: 'Cormorant Garamond', serif; font-size: 2.1rem; font-weight: 300; color: var(--text-bright); margin-bottom: 1rem; }
+        .cr-step p { font-size: 1.1rem; color: var(--text); line-height: 1.75; margin-bottom: 1rem; }
+        .cr-list { list-style: none; margin: 0 0 1rem; padding: 0; }
+        .cr-list li { position: relative; padding-left: 1.6rem; margin-bottom: 0.85rem; font-size: 1.08rem; line-height: 1.7; color: var(--text); }
+        .cr-list li::before { content:'—'; position: absolute; left: 0; color: var(--vermillion); font-family: 'Space Mono', monospace; }
+        .cr-list.is-allowed li::before { content:'✓'; color: var(--ochre); font-size: 0.85rem; top: 0.15rem; }
+        .cr-sublabel { font-family: 'Syne', sans-serif; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-muted); margin: 1.5rem 0 0.85rem; padding-bottom: 0.4rem; border-bottom: 1px solid var(--border); }
+        .cr-warning { margin-top: 1.25rem; padding: 1.25rem 1.4rem; background: rgba(230,59,46,0.08); border-left: 3px solid var(--vermillion); font-size: 1.05rem; line-height: 1.7; color: var(--text); }
+        .cr-warning strong { color: var(--text-bright); font-family: 'Syne', sans-serif; font-size: 0.85rem; letter-spacing: 0.12em; text-transform: uppercase; display: block; margin-bottom: 0.4rem; }
+        .cr-onceonly { margin-top: 2rem; padding: 2rem 2.5rem; border: 2px solid var(--vermillion); background: rgba(230,59,46,0.06); display: grid; grid-template-columns: auto 1fr; gap: 2rem; align-items: center; }
+        .cr-onceonly-mark { font-family: 'Syne', sans-serif; font-size: 2.6rem; font-weight: 800; color: var(--vermillion); line-height: 1; }
+        .cr-onceonly h4 { font-family: 'Syne', sans-serif; font-size: 0.95rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--vermillion); margin-bottom: 0.5rem; }
+        .cr-onceonly p { font-size: 1.12rem; color: var(--text); line-height: 1.75; }
+        .cr-footnote { margin-top: 1.5rem; padding: 1.75rem 2rem; background: var(--bg-surface); border: 1px solid var(--border); font-size: 1.08rem; color: var(--text-muted); line-height: 1.75; }
+        .cr-footnote h4 { font-family: 'Syne', sans-serif; font-size: 0.9rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-bright); margin-bottom: 0.6rem; }
 
         /* ── SPEAKERS ── */
         #speakers { background: var(--bg); }
@@ -271,6 +329,9 @@
             .track:first-child { border-right: none; border-bottom: 1px solid var(--border-strong); }
             .speakers-grid { grid-template-columns: repeat(2, 1fr); }
             .organizers-grid { grid-template-columns: repeat(2, 1fr); }
+            .cr-steps { grid-template-columns: 1fr; }
+            .program-logistics { grid-template-columns: 1fr; }
+            .alert-bar { padding: 1.5rem 2rem; }
         }
         @media (max-width: 768px) {
             .nav-links { display: none; }
@@ -281,6 +342,11 @@
             footer { grid-template-columns: 1fr; text-align: center; }
             .footer-right { text-align: center; }
             .submission-banner { padding: 2rem 1.5rem; }
+            .program-row { grid-template-columns: 1fr; gap: 0.5rem; padding: 1.25rem 1.25rem 1.25rem 1.5rem; }
+            .program-tag { text-align: left; }
+            .cr-onceonly { grid-template-columns: 1fr; gap: 1rem; padding: 1.75rem; }
+            .alert-bar { flex-direction: column; align-items: flex-start; }
+            .cr-step { padding: 1.75rem; }
         }
     </style>
 </head>
@@ -289,7 +355,7 @@
     <nav>
         <div class="nav-logo">AI4VA</div>
         <ul class="nav-links">
-            <li><a href="#about">About</a></li><li><a href="#topics">Topics</a></li><li><a href="#dates">Dates</a></li><li><a href="#participate">Call for Papers</a></li><li><a href="#program">Program</a></li><li><a href="#speakers">Speakers</a></li><li><a href="#committee">Committee</a></li><li><a href="#sponsors">Sponsors</a></li><li><a href="#contact">Contact</a></li>
+            <li><a href="#about">About</a></li><li><a href="#topics">Topics</a></li><li><a href="#dates">Dates</a></li><li><a href="#participate">Call for Papers</a></li><li><a href="#camera-ready">Camera-Ready</a></li><li><a href="#program">Program</a></li><li><a href="#speakers">Speakers</a></li><li><a href="#committee">Committee</a></li><li><a href="#sponsors">Sponsors</a></li><li><a href="#contact">Contact</a></li>
         </ul>
     </nav>
 
@@ -305,10 +371,19 @@
                 <div class="countdown-unit"><span class="countdown-value" id="cd-mins">--</span><span class="countdown-label">Minutes</span></div>
                 <div class="countdown-unit"><span class="countdown-value" id="cd-secs">--</span><span class="countdown-label">Seconds</span></div>
             </div>
-            <p class="countdown-caption" id="countdown-caption">Until acceptance notifications · both tracks now closed</p>
+            <p class="countdown-caption" id="countdown-caption">Until the camera-ready deadline · August 15, 2026</p>
         </div>
         <div class="scroll-indicator">SCROLL</div>
     </section>
+
+    <div class="alert-bar">
+        <div class="alert-bar-text">
+            <span class="alert-flag">New · Important</span>
+            <strong>Camera-Ready Instructions — due August 15, 2026</strong>
+            <span class="alert-sub">Accepted full-paper (archival) authors: please read carefully.</span>
+        </div>
+        <a href="#camera-ready" class="alert-bar-cta">Read Instructions ↓</a>
+    </div>
 
     <section id="about">
         <span class="section-number">01</span>
@@ -369,7 +444,7 @@
         <div class="dates-layout">
             <div class="date-highlight"><div class="date-highlight-box"><span class="date-month">September</span><span class="date-day">09</span><span class="date-year">2026 · PM Session</span><div class="date-location">Malmö, Sweden<br>ECCV 2026 · Sep 8 to 13<br>Workshop: Sep 9 (afternoon)</div></div></div>
             <div class="timeline">
-                <div class="timeline-section"><h3 class="timeline-section-title">Full Papers (Archival) <span class="status-chip closed">Closed</span></h3><div class="timeline-item is-closed"><span class="timeline-date">Jul 27, 2026</span><div class="timeline-content"><h4>Full Paper Submission Deadline</h4><p>Closed. This track is no longer accepting submissions</p></div></div><div class="timeline-item"><span class="timeline-date">Aug 9, 2026</span><div class="timeline-content"><h4>Acceptance Notification</h4><p>Authors notified by email</p></div></div><div class="timeline-item"><span class="timeline-date">Aug 14, 2026</span><div class="timeline-content"><h4>Camera-Ready &amp; Copyright Due</h4><p>ECCV 2026 Workshop Proceedings (Springer) · detailed instructions to follow</p></div></div></div>
+                <div class="timeline-section"><h3 class="timeline-section-title">Full Papers (Archival) <span class="status-chip closed">Closed</span></h3><div class="timeline-item is-closed"><span class="timeline-date">Jul 27, 2026</span><div class="timeline-content"><h4>Full Paper Submission Deadline</h4><p>Closed. This track is no longer accepting submissions</p></div></div><div class="timeline-item"><span class="timeline-date">Aug 9, 2026</span><div class="timeline-content"><h4>Acceptance Notification</h4><p>Authors notified by email</p></div></div><div class="timeline-item"><span class="timeline-date">Aug 15, 2026</span><div class="timeline-content"><h4>Camera-Ready Due <span class="status-chip open">New</span></h4><p>Upload the final PDF to OpenReview · Springer proceedings via Meteor · <a href="#camera-ready">read the full instructions</a></p></div></div></div>
                 <div class="timeline-section"><h3 class="timeline-section-title">Extended Abstracts (Non-Archival) <span class="status-chip closed">Closed</span></h3><div class="timeline-item is-closed"><span class="timeline-date">Jul 27, 2026</span><div class="timeline-content"><h4>Extended Abstract Submission Deadline</h4><p>Closed. This track is no longer accepting submissions</p></div></div><div class="timeline-item"><span class="timeline-date">Aug 9, 2026</span><div class="timeline-content"><h4>Acceptance Notification</h4><p>11:59 PM AoE · authors notified by email · no camera-ready required</p></div></div></div>
                 <div class="timeline-item" style="border-bottom: none; background: rgba(255,255,255,0.02); padding: 1.25rem;"><span class="timeline-date">Sep 9, 2026</span><div class="timeline-content"><h4>Workshop Day</h4><p>Afternoon (PM) session · Malmö, Sweden</p></div></div>
                 <div class="timeline-notice">Both submission tracks are now closed. Acceptance notifications for the full paper and extended abstract tracks will be sent on August 9, 2026. Full papers appear in the ECCV 2026 Workshop Proceedings (Springer); extended abstracts are non-archival. All submissions were handled via OpenReview.</div>
@@ -389,32 +464,150 @@
         <div class="submission-banner">
             <p class="submission-banner-label">Submission Status</p>
             <h4>Both Tracks Are Now Closed</h4>
-            <p>The <strong>Full Paper</strong> (archival) track closed on July 27, 2026 and the <strong>Extended Abstract</strong> (non-archival) track closed on August 6, 2026. No further submissions are being accepted. Reviewing is under way, and acceptance notifications for both tracks will be sent by email on <strong>August 9, 2026</strong>. Authors can track the status of their submission on OpenReview.</p>
-            <p class="track-note">Notifications for both tracks · Aug 9, 2026</p><br>
+            <p>The <strong>Full Paper</strong> (archival) track closed on July 27, 2026 and the <strong>Extended Abstract</strong> (non-archival) track closed on August 6, 2026. No further submissions are being accepted. Acceptance notifications for both tracks were sent by email on <strong>August 9, 2026</strong>. Authors of accepted full archival papers should now follow the <a href="#camera-ready" style="color:var(--ochre);">camera-ready instructions</a>, due <strong>August 15, 2026</strong>.</p>
+            <p class="track-note">Camera-ready due · Aug 15, 2026</p><br>
             <a href="https://openreview.net/group?id=thecvf.com/ECCV/2026/Workshop/AI4VA" class="btn-submit" target="_blank" rel="noopener">View on OpenReview</a>
         </div>
-        <div class="presentation-info"><div class="presentation-icon">◎</div><div><h4>Presentation Guidelines</h4><p>All accepted papers present a poster. Selected oral spotlight presenters will additionally deliver a short talk. Poster dimensions and detailed presentation guidelines will follow the ECCV 2026 workshop logistics and will be announced after acceptance notifications.</p></div></div>
+        <div class="presentation-info"><div class="presentation-icon">◎</div><div><h4>Presentation Guidelines</h4><p><strong>Every accepted paper presents a poster</strong> in the MalmöMässan Exhibit Hall during the 15:00–16:00 session — this includes papers selected for an oral spotlight. Oral spotlight authors present <em>both</em> a short talk and a poster; the talk does not replace the poster. Poster boards are <strong>140 × 100 cm</strong>; poster printing information will be posted on the website shortly. Room assignments will be posted on the app.</p></div></div>
         <div class="presentation-info"><div class="presentation-icon">✓</div><div><h4>Registration Requirement</h4><p>All ECCV 2026 papers, both workshop and main conference papers, that have been approved for inclusion in the proceedings are required to have the full passport/author registration.</p></div></div>
-        <div class="presentation-info"><div class="presentation-icon">✎</div><div><h4>Camera-Ready</h4><p>Camera-ready instructions will be added soon, as we await these instructions from the ECCV Workshop Chairs.</p></div></div>
+        <div class="presentation-info"><div class="presentation-icon">✎</div><div><h4>Camera-Ready <span class="status-chip open">New</span></h4><p>Camera-ready instructions for accepted full archival papers are now available and are due <strong>August 15, 2026</strong>. There are two separate submissions — OpenReview and Meteor — with different rules about supplementary material. <a href="#camera-ready">Read the full instructions carefully →</a></p></div></div>
+    </section>
+
+    <section id="camera-ready">
+        <span class="section-number">05</span><span class="section-label">New · Important</span>
+        <h2 class="section-title">Camera-Ready Instructions</h2>
+        <p class="cr-lede">These instructions apply to <strong>accepted full archival papers</strong> only. Extended abstracts are non-archival and require no camera-ready submission. There are <strong>two separate submissions</strong> — one to OpenReview and one to Meteor — and the rules about supplementary material are <em>different</em> for each.</p>
+        <p class="cr-readcarefully">Please read carefully · Due August 15, 2026</p>
+
+        <div class="cr-steps">
+            <div class="cr-step">
+                <div class="cr-step-label"><span>Step 01 · OpenReview</span><span class="cr-due">Due Aug 15</span></div>
+                <h3>Upload your final PDF</h3>
+                <p>Authors of accepted full archival papers must upload their camera-ready papers to OpenReview. Accepted full-paper authors can edit their submission and upload the final PDF.</p>
+                <ul class="cr-list">
+                    <li>Later on, just before the conference, the program chairs of AI4VA will make those PDFs public (set the visibility to public), so anyone can get access to them. This is as per ECCV Workshop rules.</li>
+                    <li>The official workshop proceedings will be published by the end of the year, so it is agreed with Springer that we make the PDFs available via OpenReview.</li>
+                    <li>This PDF may include, if the authors wish, the supplementary material appended to the PDF.</li>
+                </ul>
+                <a href="https://openreview.net/group?id=thecvf.com/ECCV/2026/Workshop/AI4VA" target="_blank" rel="noopener">Edit your submission on OpenReview →</a>
+            </div>
+
+            <div class="cr-step">
+                <div class="cr-step-label"><span>Step 02 · Meteor</span><span class="cr-due">Springer</span></div>
+                <h3>Submit to the proceedings</h3>
+                <p>Accepted full-paper authors will be invited directly to submit their papers and supplementary material via Meteor — the same procedure as for the main conference.</p>
+                <p class="cr-sublabel">What Meteor will allow you to submit</p>
+                <ul class="cr-list is-allowed">
+                    <li>The main paper PDF that matches the final, corrected, post-review version of the paper. <strong>No appended supplementary material.</strong></li>
+                    <li>The LaTeX source files (including figures) corresponding <em>only</em> to the main paper. The paper source must not include a link to the supplementary material, and the LaTeX source of the supplementary material must be removed completely from the source package.</li>
+                    <li>Separately, any Electronic Supplementary Material (ESM) you want to provide in support of the paper on SpringerLink. If the supplementary material is a PDF, it must be uploaded as a separate PDF called “Supplementary Material”.</li>
+                </ul>
+                <div class="cr-warning">
+                    <strong>Papers will be excluded if</strong>
+                    the main paper PDF and/or source submitted to Meteor includes an Appendix or Supplementary Material — the paper will not be included in the proceedings. Any Supplementary Material in PDF format must be submitted as a separate file.
+                </div>
+            </div>
+        </div>
+
+        <div class="cr-onceonly">
+            <div class="cr-onceonly-mark">!</div>
+            <div>
+                <h4>Very Important — One submission only</h4>
+                <p>Springer will allow only <strong>ONE</strong> submission per paper. The submission link can only be used <strong>ONCE</strong>. Please make sure everything is final before you submit. Submission instructions are the same as for the main conference: <a href="https://docs.google.com/document/d/1DCMcCdtZbrYtG1oi7qeT8--D3GPc9mLg/edit" target="_blank" rel="noopener">read the ECCV 2026 submission instructions</a>.</p>
+            </div>
+        </div>
+
+        <div class="cr-footnote">
+            <h4>On Electronic Supplementary Material (ESM)</h4>
+            <p>The ESM may consist of PDFs, videos, images, data, or other files supporting the paper. The ESM should not be considered an Appendix of the paper. Authors may refer to the ESM generically — e.g. “as described in the Supplementary Material” — but there should be no formal cross-references, e.g. to “Appendix B.3”.</p>
+        </div>
+
+        <div class="cr-footnote">
+            <h4>Registration Requirement</h4>
+            <p>All ECCV 2026 papers, both workshop and main conference papers, that have been approved for inclusion in the proceedings are required to have the full passport/author registration.</p>
+        </div>
     </section>
 
     <section id="program">
-        <span class="section-number">05</span><span class="section-label">Schedule</span>
+        <span class="section-number">06</span><span class="section-label">Schedule</span>
         <h2 class="section-title">Workshop Program</h2>
-        <div class="program-tba">
-            <h4>Program To Be Announced</h4>
-            <p>The half-day afternoon program (keynotes, archival paper spotlights, poster session, and panel discussion) will be published here once the speaker lineup is confirmed.</p>
+        <p class="cr-lede">Half-day afternoon session · Wednesday, September 9, 2026 · Malmö, Sweden</p>
+
+        <div class="program-grid">
+            <div class="program-row is-chair">
+                <span class="program-time">13:00 — 13:05</span>
+                <div class="program-what"><h4>Opening Remarks</h4><p>Deblina Bhattacharjee · Workshop Chair, University of Bath</p></div>
+                <span class="program-tag">Welcome</span>
+            </div>
+            <div class="program-row is-keynote">
+                <span class="program-time">13:05 — 13:40</span>
+                <div class="program-what"><h4>Keynote I — Björn Ommer</h4><p>LMU Munich · latent diffusion models and generative image research</p></div>
+                <span class="program-tag">30 min + 5 Q&amp;A</span>
+            </div>
+            <div class="program-row is-keynote">
+                <span class="program-time">13:40 — 14:15</span>
+                <div class="program-what"><h4>Keynote II — Niloy J. Mitra</h4><p>University College London · Adobe Research · generative models for 3D content</p></div>
+                <span class="program-tag">30 min + 5 Q&amp;A</span>
+            </div>
+            <div class="program-row is-keynote">
+                <span class="program-time">14:15 — 14:50</span>
+                <div class="program-what"><h4>Keynote III — Ranjay Krishna</h4><p>University of Washington · Allen Institute for AI · vision-language models and multimodal reasoning</p></div>
+                <span class="program-tag">30 min + 5 Q&amp;A</span>
+            </div>
+            <div class="program-row is-transit">
+                <span class="program-time">14:50 — 15:00</span>
+                <div class="program-what"><h4>Transition to the Exhibit Hall</h4><p>Please make your way to the MalmöMässan Exhibit Hall</p></div>
+                <span class="program-tag">Break</span>
+            </div>
+            <div class="program-row is-poster">
+                <span class="program-time">15:00 — 16:00</span>
+                <div class="program-what"><h4>Poster Session &amp; Coffee</h4><p>All accepted papers, archival and non-archival — including the oral spotlight papers · MalmöMässan Exhibit Hall</p></div>
+                <span class="program-tag">60 min</span>
+            </div>
+            <div class="program-row is-keynote">
+                <span class="program-time">16:00 — 16:35</span>
+                <div class="program-what"><h4>Keynote IV — To Be Announced</h4><p>Our fourth keynote is awaiting confirmation and will be announced shortly</p></div>
+                <span class="program-tag">30 min + 5 Q&amp;A</span>
+            </div>
+            <div class="program-row is-oral">
+                <span class="program-time">16:35 — 17:15</span>
+                <div class="program-what"><h4>Oral Spotlights I–IV</h4><p>Four selected papers · 7 minutes each followed by 3 minutes of questions · these authors also present a poster in the 15:00 session</p></div>
+                <span class="program-tag">4 × 10 min</span>
+            </div>
+            <div class="program-row is-chair">
+                <span class="program-time">17:15 — 17:20</span>
+                <div class="program-what"><h4>Closing Remarks &amp; Certificates</h4><p>Deblina Bhattacharjee · Workshop Chair, University of Bath</p></div>
+                <span class="program-tag">Close</span>
+            </div>
+        </div>
+
+        <p class="program-note">The programme is provisional and subject to change. Room assignments will be posted on the app.</p>
+
+        <div class="program-logistics">
+            <div class="logistics-card">
+                <h4>Poster Information</h4>
+                <p class="logistics-spec">Board size · 140 × 100 cm</p>
+                <p><strong>All accepted papers present a poster, including those selected for an oral spotlight.</strong> An oral spotlight is in addition to the poster, not instead of it.</p>
+                <p>All posters will be displayed in the MalmöMässan Exhibit Hall during the 15:00–16:00 session. Boards are shared with other workshops and are assigned according to schedule, so please set up and remove your poster within your session window.</p>
+                <p>Poster printing information will be posted on the website shortly.</p>
+            </div>
+            <div class="logistics-card">
+                <h4>Rooms &amp; Venue</h4>
+                <p class="logistics-spec">Malmö, Sweden · September 9, 2026</p>
+                <p>Room assignments will be posted on the app. The keynotes and oral spotlights take place in the workshop room; the poster session takes place separately in the Exhibit Hall.</p>
+                <p>Presenters are asked to load their slides during the preceding break.</p>
+            </div>
         </div>
     </section>
 
-    <section id="speakers"><span class="section-number">06</span><span class="section-label">Keynotes</span><h2 class="section-title">Invited Speakers</h2><div class="speakers-grid">
+    <section id="speakers"><span class="section-number">07</span><span class="section-label">Keynotes</span><h2 class="section-title">Invited Speakers</h2><div class="speakers-grid">
         <div class="speaker-card"><span class="speaker-status confirmed">Confirmed</span><div class="speaker-avatar"><img src="assets/images/bjorn_ommer.jpg" alt="Björn Ommer" onerror="this.remove()" />BO</div><h4 class="speaker-name"><a href="https://ommer-lab.com/ommer/" target="_blank" rel="noopener">Björn Ommer</a></h4><p class="speaker-affiliation">LMU Munich</p><p class="speaker-bio">Professor of Computer Vision &amp; Learning at Ludwig Maximilian University of Munich. His group's work on latent diffusion models underpins Stable Diffusion and much of today's generative image research.</p></div>
         <div class="speaker-card"><span class="speaker-status confirmed">Confirmed</span><div class="speaker-avatar"><img src="assets/images/niloy_mitra.jpg" alt="Niloy J. Mitra" onerror="this.remove()" />NM</div><h4 class="speaker-name"><a href="http://www0.cs.ucl.ac.uk/staff/n.mitra/" target="_blank" rel="noopener">Niloy J. Mitra</a></h4><p class="speaker-affiliation">University College London · Adobe Research</p><p class="speaker-bio">Professor of Computer Graphics at UCL, where he leads the Smart Geometry Processing group, and Senior Research Scientist at Adobe Research. Works on geometry processing, shape analysis, and generative models for 3D content.</p></div>
         <div class="speaker-card"><span class="speaker-status confirmed">Confirmed</span><div class="speaker-avatar"><img src="assets/images/ranjay_krishna.jpg" alt="Ranjay Krishna" onerror="this.remove()" />RK</div><h4 class="speaker-name"><a href="https://www.ranjaykrishna.com/index.html" target="_blank" rel="noopener">Ranjay Krishna</a></h4><p class="speaker-affiliation">University of Washington · Allen Institute for AI</p><p class="speaker-bio">Assistant Professor at the Paul G. Allen School and research lead at AI2. Creator of Visual Genome; his work spans vision-language models, multimodal reasoning, and human-AI interaction.</p></div>
         <div class="speaker-card"><span class="speaker-status pending">TBA</span><div class="speaker-avatar">?</div><h4 class="speaker-name">To Be Announced</h4><p class="speaker-affiliation">Keynote 4</p><p class="speaker-bio">Our fourth keynote is awaiting confirmation and will be announced here shortly.</p></div>
     </div></section>
 
-    <section id="committee"><span class="section-number">07</span><span class="section-label">Organizers</span><h2 class="section-title">Organizing Committee</h2><div class="organizers-grid"><div class="organizer-card"><img class="organizer-photo" src="assets/images/deblina_bhattacharjee.jpeg" alt="Deblina Bhattacharjee" /><span class="organizer-role">Lead Organizer</span><h4 class="organizer-name">Deblina Bhattacharjee</h4><p class="organizer-affiliation">Assistant Professor, University of Bath, UK</p></div><div class="organizer-card"><img class="organizer-photo" src="assets/images/yin_zhang.jpeg" alt="Yin Zhang" /><span class="organizer-role">Organizer</span><h4 class="organizer-name"><a href="https://www.linkedin.com/in/yinzhang-unige/" target="_blank">Iris (Yin) Zhang</a></h4><p class="organizer-affiliation">PhD in Translation Studies, University of Geneva</p></div><div class="organizer-card"><img class="organizer-photo" src="assets/images/bingchen_zhao.png" alt="Bingchen Zhao" /><span class="organizer-role">Organizer</span><h4 class="organizer-name"><a href="https://bzhao.me/" target="_blank">Bingchen Zhao</a></h4><p class="organizer-affiliation">PhD in Computer Science, University of Edinburgh</p></div></div></section>
+    <section id="committee"><span class="section-number">08</span><span class="section-label">Organizers</span><h2 class="section-title">Organizing Committee</h2><div class="organizers-grid"><div class="organizer-card"><img class="organizer-photo" src="assets/images/deblina_bhattacharjee.jpeg" alt="Deblina Bhattacharjee" /><span class="organizer-role">Lead Organizer</span><h4 class="organizer-name">Deblina Bhattacharjee</h4><p class="organizer-affiliation">Assistant Professor, University of Bath, UK</p></div><div class="organizer-card"><img class="organizer-photo" src="assets/images/yin_zhang.jpeg" alt="Yin Zhang" /><span class="organizer-role">Organizer</span><h4 class="organizer-name"><a href="https://www.linkedin.com/in/yinzhang-unige/" target="_blank">Iris (Yin) Zhang</a></h4><p class="organizer-affiliation">PhD in Translation Studies, University of Geneva</p></div><div class="organizer-card"><img class="organizer-photo" src="assets/images/bingchen_zhao.png" alt="Bingchen Zhao" /><span class="organizer-role">Organizer</span><h4 class="organizer-name"><a href="https://bzhao.me/" target="_blank">Bingchen Zhao</a></h4><p class="organizer-affiliation">PhD in Computer Science, University of Edinburgh</p></div></div></section>
 
     <section id="sponsors"><span class="section-label">Support</span><h2 class="section-title">Sponsors</h2><p class="sponsor-text">Sponsors for the 4th edition will be announced soon. Previous editions of AI4VA were generously supported by Meitu, whose contributions made our awards and challenges possible.</p><p class="sponsor-text">Interested in supporting the intersection of AI and visual arts? We welcome partners who share our vision for trustworthy, human-aligned AI in creative domains.</p><a href="mailto:db2466@bath.ac.uk" class="btn-sponsor">Become a Sponsor</a></section>
 
@@ -426,26 +619,32 @@
         const cursor=document.getElementById('cursor');let mouseX=0,mouseY=0,cursorX=0,cursorY=0;document.addEventListener('mousemove',e=>{mouseX=e.clientX;mouseY=e.clientY});function animateCursor(){cursorX+=(mouseX-cursorX)*0.15;cursorY+=(mouseY-cursorY)*0.15;cursor.style.left=cursorX+'px';cursor.style.top=cursorY+'px';requestAnimationFrame(animateCursor)}animateCursor();
         document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',function(e){e.preventDefault();const t=document.querySelector(this.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth',block:'start'})})});
         const observer=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.style.opacity='1';entry.target.style.transform='translateY(0)'}})},{threshold:0.1,rootMargin:'0px 0px -80px 0px'});
-        document.querySelectorAll('.manifesto-card,.topic-cell,.timeline-item,.track,.speaker-card,.organizer-card,.program-tba').forEach(el=>{el.style.opacity='0';el.style.transform='translateY(30px)';el.style.transition='opacity 0.8s ease, transform 0.8s ease';observer.observe(el)});
-        // Countdown to acceptance notifications for both tracks (Aug 9, 2026, 11:59 PM AoE = Aug 10 11:59 UTC)
-        const deadline=new Date('2026-08-10T11:59:00+00:00');
+        document.querySelectorAll('.manifesto-card,.topic-cell,.timeline-item,.track,.speaker-card,.organizer-card,.program-row,.cr-step,.logistics-card').forEach(el=>{el.style.opacity='0';el.style.transform='translateY(30px)';el.style.transition='opacity 0.8s ease, transform 0.8s ease';observer.observe(el)});
+        // Two-stage countdown: camera-ready deadline, then the workshop itself
+        const stages=[
+            {when:new Date('2026-08-16T11:59:00+00:00'),caption:'Until the camera-ready deadline · August 15, 2026'},
+            {when:new Date('2026-09-09T11:00:00+00:00'),caption:'Until the workshop · September 9, 2026 · Malmö'}
+        ];
         const pad=n=>String(n).padStart(2,'0');
         let timer=null;
         function tick(){
-            const diff=deadline-new Date();
-            if(diff<=0){
-                document.getElementById('countdown').innerHTML='<div class="countdown-unit" style="min-width:auto;padding:1rem 2rem;"><span class="countdown-value" style="font-size:1.6rem;font-style:italic;">Acceptance notifications have been sent</span></div>';
-                const cap=document.getElementById('countdown-caption');
-                if(cap)cap.textContent='Notifications were sent on August 9, 2026';
+            const now=new Date();
+            const stage=stages.find(s=>s.when-now>0);
+            const cap=document.getElementById('countdown-caption');
+            if(!stage){
+                document.getElementById('countdown').innerHTML='<div class="countdown-unit" style="min-width:auto;padding:1rem 2rem;"><span class="countdown-value" style="font-size:1.6rem;font-style:italic;">The workshop is under way</span></div>';
+                if(cap)cap.textContent='AI4VA · September 9, 2026 · Malmö, Sweden';
                 if(timer)clearInterval(timer);
                 timer=null;
                 return false;
             }
-            const d=Math.floor(diff/864e5),h=Math.floor(diff%864e5/36e5),m=Math.floor(diff%36e5/6e4),s=Math.floor(diff%6e4/1e3);
+            if(cap&&cap.textContent!==stage.caption)cap.textContent=stage.caption;
+            const diff=stage.when-now;
+            const d=Math.floor(diff/864e5),h=Math.floor(diff%864e5/36e5),m=Math.floor(diff%36e5/6e4),s2=Math.floor(diff%6e4/1e3);
             document.getElementById('cd-days').textContent=d;
             document.getElementById('cd-hours').textContent=pad(h);
             document.getElementById('cd-mins').textContent=pad(m);
-            document.getElementById('cd-secs').textContent=pad(s);
+            document.getElementById('cd-secs').textContent=pad(s2);
             return true;
         }
         if(tick())timer=setInterval(tick,1000);
