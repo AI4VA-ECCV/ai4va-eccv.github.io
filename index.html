@@ -217,6 +217,23 @@
         .logistics-card p:last-child { margin-bottom: 0; }
         .logistics-spec { font-family: 'Space Mono', monospace; font-size: 0.85rem; color: var(--ochre); letter-spacing: 0.05em; }
 
+        .board-heading { font-family: 'Syne', sans-serif; font-size: 1.15rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-bright); margin-top: 3.5rem; margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.85rem; flex-wrap: wrap; }
+        .board-intro { max-width: 820px; font-size: 1.1rem; line-height: 1.75; color: var(--text-muted); margin-bottom: 1.75rem; }
+        .board-grid { border: 1px solid var(--border-strong); border-bottom: none; margin-bottom: 2.5rem; }
+        .board-row { display: grid; grid-template-columns: 110px 1fr 140px; gap: 1.75rem; align-items: center; padding: 1.15rem 1.5rem; border-bottom: 1px solid var(--border); background: var(--bg-surface); transition: background 0.3s ease; position: relative; }
+        .board-row::before { content:''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--ochre); }
+        .board-row.is-oral::before { background: var(--ultramarine); }
+        .board-row.is-empty::before { background: var(--border-strong); }
+        .board-row:hover { background: var(--bg-elevated); }
+        .board-num { font-family: 'Space Mono', monospace; font-size: 1.35rem; font-weight: 700; color: var(--ochre); letter-spacing: 0.02em; font-variant-numeric: tabular-nums; }
+        .board-row.is-oral .board-num { color: var(--ultramarine); }
+        .board-row.is-empty .board-num { color: var(--text-muted); opacity: 0.5; font-weight: 400; }
+        .board-what h4 { font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 600; color: var(--text-bright); margin-bottom: 0.2rem; line-height: 1.45; letter-spacing: 0.01em; }
+        .board-what p { font-size: 1rem; color: var(--text-muted); line-height: 1.55; margin: 0; }
+        .board-empty-note { font-style: italic; opacity: 0.6; }
+        .board-tag { font-family: 'Space Mono', monospace; font-size: 0.62rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-muted); text-align: right; }
+        .board-row.is-oral .board-tag { color: var(--ultramarine); }
+
         /* ── ALERT BAR ── */
         .alert-bar { background: var(--vermillion); color: var(--white); padding: 1.5rem 4rem; display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap; position: relative; overflow: hidden; }
         .alert-bar::before { content:''; position: absolute; inset: 0; background: repeating-linear-gradient(45deg, rgba(0,0,0,0.05) 0 12px, transparent 12px 24px); pointer-events: none; }
@@ -344,6 +361,8 @@
             .footer-right { text-align: center; }
             .submission-banner { padding: 2rem 1.5rem; }
             .program-row { grid-template-columns: 1fr; gap: 0.5rem; padding: 1.25rem 1.25rem 1.25rem 1.5rem; }
+            .board-row { grid-template-columns: 1fr; gap: 0.35rem; padding: 1.15rem 1.15rem 1.15rem 1.4rem; }
+            .board-tag { text-align: left; }
             .program-tag { text-align: left; }
             .cr-onceonly { grid-template-columns: 1fr; gap: 1rem; padding: 1.75rem; }
             .alert-bar { flex-direction: column; align-items: flex-start; }
@@ -376,6 +395,15 @@
         </div>
         <div class="scroll-indicator">SCROLL</div>
     </section>
+
+    <div class="alert-bar">
+        <div class="alert-bar-text">
+            <span class="alert-flag">New</span>
+            <strong>Poster board numbers updated &mdash; boards 232&ndash;246</strong>
+            <span class="alert-sub">Find your assigned board number before you arrive.</span>
+        </div>
+        <a href="#program" class="alert-bar-cta">See Assignments &darr;</a>
+    </div>
 
     <div class="alert-bar">
         <div class="alert-bar-text">
@@ -444,32 +472,110 @@
             </div>
             <div class="program-row is-poster">
                 <span class="program-time">15:00 — 16:00</span>
-                <div class="program-what"><h4>Poster Session &amp; Coffee</h4><p>All accepted papers, archival and non-archival — including the oral spotlight papers · MalmöMässan Exhibit Hall</p></div>
+                <div class="program-what"><h4>Poster Session &amp; Coffee</h4><p>All accepted papers, archival and non-archival — including the oral spotlight papers · MalmöMässan Exhibit Hall · boards 232–246</p></div>
                 <span class="program-tag">60 min</span>
             </div>
             <div class="program-row is-keynote">
                 <span class="program-time">16:00 — 16:35</span>
-                <div class="program-what"><h4>Keynote IV — To Be Announced</h4><p>Our fourth keynote is awaiting confirmation and will be announced shortly</p></div>
+                <div class="program-what"><h4>Keynote IV — Stuart James</h4><p>Durham University · Spatial Reasoning for Cultural Heritage</p></div>
                 <span class="program-tag">30 min + 5 Q&amp;A</span>
             </div>
             <div class="program-row is-oral">
-                <span class="program-time">16:35 — 17:15</span>
-                <div class="program-what"><h4>Oral Spotlights I–IV</h4><p>Four selected papers · 7 minutes each followed by 3 minutes of questions · these authors also present a poster in the 15:00 session</p></div>
-                <span class="program-tag">4 × 10 min</span>
+                <span class="program-time">16:35 — 17:05</span>
+                <div class="program-what"><h4>Oral Spotlights I–III</h4><p>Three selected papers · 7 minutes each followed by 3 minutes of questions · these authors also present a poster in the 15:00 session</p></div>
+                <span class="program-tag">3 × 10 min</span>
             </div>
             <div class="program-row is-chair">
-                <span class="program-time">17:15 — 17:20</span>
-                <div class="program-what"><h4>Closing Remarks &amp; Certificates</h4><p>Deblina Bhattacharjee · Workshop Chair, University of Bath</p></div>
+                <span class="program-time">17:05 — 17:10</span>
+                <div class="program-what"><h4>Closing Remarks</h4><p>Deblina Bhattacharjee · Workshop Chair, University of Bath</p></div>
                 <span class="program-tag">Close</span>
             </div>
         </div>
 
         <p class="program-note">The programme is provisional and subject to change. Room assignments will be posted on the app.</p>
 
+
+        <h3 class="board-heading">Poster Board Assignments <span class="status-chip open">New</span></h3>
+        <p class="board-intro">AI4VA has been allocated boards <strong>232&ndash;246</strong> in the Malm&ouml;M&auml;ssan Exhibit Hall. Please find your board number below and mount your poster there at the start of the 15:00&ndash;16:00 session.</p>
+
+        <div class="board-grid">
+            <div class="board-row">
+                <span class="board-num">232</span>
+                <div class="board-what"><h4>Spatial Reflections: Semantic Mosaics on 3D Surfaces</h4><p>Abhishek Dangeti; Vikram Jamwal; Pavan Gajula</p></div>
+                <span class="board-tag">Poster</span>
+            </div>
+            <div class="board-row">
+                <span class="board-num">233</span>
+                <div class="board-what"><h4>Point-to-Point: Sparse Motion Guidance for Controllable Video Editing</h4><p>Yeji Song; Jaehyun Lee; Mijin Koo; Junhoo Lee; Nojun Kwak</p></div>
+                <span class="board-tag">Poster</span>
+            </div>
+            <div class="board-row">
+                <span class="board-num">234</span>
+                <div class="board-what"><h4>CultureCanvas: An Agentic Multimodal Framework for Spatial Visual Storytelling from Folk Narratives</h4><p>Harini S; Kaustubha V</p></div>
+                <span class="board-tag">Poster</span>
+            </div>
+            <div class="board-row">
+                <span class="board-num">235</span>
+                <div class="board-what"><h4>Structure- and Appearance-Rich Training-Free Spatial Control for Text-to-Image Generation</h4><p>Lexi Pang; Liheng Zhang; Hang Ye; Xiaoxuan Ma; Yizhou Wang</p></div>
+                <span class="board-tag">Poster</span>
+            </div>
+            <div class="board-row">
+                <span class="board-num">236</span>
+                <div class="board-what"><h4>Do Text-to-Image Models Respect the Visual Behaviour of Watercolour?</h4><p>Oscar W. Horsfall</p></div>
+                <span class="board-tag">Poster</span>
+            </div>
+            <div class="board-row">
+                <span class="board-num">237</span>
+                <div class="board-what"><h4>RefCompose: Multi-Reference Image Generation via LoRA-Conditioned Diffusion</h4><p>Sai Sri Teja Kuppa; Parth Shinde; Priyadharsan Balaji S; Jinka Harshavardhan; Sriprabha Ramanarayanan</p></div>
+                <span class="board-tag">Poster</span>
+            </div>
+            <div class="board-row is-oral">
+                <span class="board-num">238</span>
+                <div class="board-what"><h4>TexSketch: Bringing Texture-Aware Colorization to Sketches</h4><p>Taraash Mittal; Gaurav Rai; Ojaswa Sharma</p></div>
+                <span class="board-tag">Oral Spotlight</span>
+            </div>
+            <div class="board-row">
+                <span class="board-num">240</span>
+                <div class="board-what"><h4>AI-Experiment: an augmented reality art project co-created with artificial intelligence</h4><p>Bernhard Egger</p></div>
+                <span class="board-tag">Poster</span>
+            </div>
+            <div class="board-row is-oral">
+                <span class="board-num">241</span>
+                <div class="board-what"><h4>JoLT: Joint Latent Trajectories for Context-Guided High-Resolution Tiled Generation</h4><p>Mathis Koroglu; Guillaume Jeanneret; Hugo Caselles-Dupré; Matthieu Cord; Arnaud Dapogny</p></div>
+                <span class="board-tag">Oral Spotlight</span>
+            </div>
+            <div class="board-row is-oral">
+                <span class="board-num">242</span>
+                <div class="board-what"><h4>PickStyle: Video-to-Video Style Transfer with Context-Style Adapters</h4><p>Soroush Mehraban; Vida Adeli; Jacob Rommann; Kyryl Truskovskyi; Harrison Sanborn; Babak Taati; Cole Clifford</p></div>
+                <span class="board-tag">Oral Spotlight</span>
+            </div>
+            <div class="board-row">
+                <span class="board-num">243</span>
+                <div class="board-what"><h4>AgentMV: A State-Guided Multi-Agent Framework for Budget-Aware Music Video Generation</h4><p>Wang Huimin; Chang Xia; Leilei Ouyang; Yongqi Kang; Yu Fu; Yuqi Ouyang</p></div>
+                <span class="board-tag">Poster</span>
+            </div>
+            <div class="board-row is-oral">
+                <span class="board-num">244</span>
+                <div class="board-what"><h4>Art-Historically Grounded Multimodal Pretraining for Art Authentication</h4><p>Batu Arda Düzgün; Ludovica Schaerf; Alessandra Conti; Eric O. Postma</p></div>
+                <span class="board-tag">Oral Spotlight</span>
+            </div>
+            <div class="board-row">
+                <span class="board-num">245</span>
+                <div class="board-what"><h4>Echoes of Memory: An Immersive Phenomenology of Forgetting</h4><p>Polina Karpikova; Gege Gao</p></div>
+                <span class="board-tag">Poster</span>
+            </div>
+            <div class="board-row">
+                <span class="board-num">246</span>
+                <div class="board-what"><h4>Temporally Coherent and Physically Grounded Music-to-Dance Generation</h4><p>Nokap Tony Park</p></div>
+                <span class="board-tag">Poster</span>
+            </div>
+        </div>
+
         <div class="program-logistics">
             <div class="logistics-card">
                 <h4>Poster Information</h4>
                 <p class="logistics-spec">140 &times; 100 cm &middot; 55.12 &times; 39.37 in &middot; <strong>landscape</strong></p>
+                <p><strong>AI4VA boards are 232&ndash;246.</strong> Individual board assignments are listed above.</p>
                 <p><strong>All accepted papers present a poster, including those selected for an oral spotlight.</strong> An oral spotlight is in addition to the poster, not instead of it.</p>
                 <p>Posters are displayed in the Malm&ouml;M&auml;ssan Exhibit Hall during the 15:00&ndash;16:00 session. Boards are shared with other workshops, so please set up and remove your poster within your session window.</p>
                 <p>Use your own artwork if you prefer, but we recommend a 3- or 4-column layout with little text, built around a few large, expressive figures. A poster is not a copy of your paper: it should give you the tools to present the work in 5&ndash;10 minutes to any passing attendee. Looking at posters from previous conferences is a good place to start.</p>
